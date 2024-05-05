@@ -9,6 +9,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "setup": "yarn && husky install",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -26,6 +27,8 @@
     "zod": "^3.23.6"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@effector/swc-plugin": "^0.0.10",
     "@swc/core": "^1.4.17",
     "@types/react": "^18.3.1",
@@ -34,6 +37,7 @@
     "effector-logger": "^0.15.0",
     "eslint": "^8.41.0",
     "eslint-kit": "^10.0.0",
+    "husky": "^8.0.0",
     "postcss-preset-env": "^9.5.10",
     "postcss-sort-media-queries": "^5.2.0",
     "prettier": "^3.0.0",
