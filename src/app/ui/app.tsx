@@ -1,6 +1,6 @@
 import React from 'react';
 
-import 'normalize.css';
+import './app.scss';
 
 // TODO: внедрить ErrorBoundary
 export const App: React.FC = () => {

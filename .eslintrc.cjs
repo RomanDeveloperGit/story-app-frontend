@@ -7,10 +7,11 @@ module.exports = configure({
       sort: {
         newline: true,
         groups: [
+          ['react', 'effector', 'antd'],
           ['^@?\\w'],
           ['^@/app', '^@/pages', '^@/widgets', '^@/features', '^@/entities', '^@/shared'],
           ['^\\.'],
-          ['normalize.css', '.module.scss'],
+          ['.scss', '.css']
         ],
       },
     }),
