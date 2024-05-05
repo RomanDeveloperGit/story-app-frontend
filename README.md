@@ -1,7 +1,7 @@
 # story-app-frontend
 An application for reading and writing stories. And, I hope, it will be useful to the FSD community.
 
-Main Stack: TS, React, Effector, FSD, Vite
+Main Stack: TS, React, Effector, Antd, FSD, Vite
 
 ## [From Vite README] React + TypeScript + Vite
 
