@@ -5,7 +5,7 @@
     "name": "Roman Sukhinin",
     "email": "roman.developer@mail.ru"
   },
-  "private": true,
+  "private": false,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
