@@ -3,6 +3,8 @@ An application for reading and writing stories. And, I hope, it will be useful t
 
 Main Stack: TS, React, Effector, Antd, FSD, Vite
 
+<!-- TODO: добавить информацию о ENV -->
+
 ## [From Vite README] React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
