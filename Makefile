@@ -22,5 +22,3 @@ delete:
 reload:
 	make delete
 	make create
-
-# TODO: Для прода добавить Makefile-инструкцию
