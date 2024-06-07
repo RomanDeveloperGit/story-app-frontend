@@ -10,7 +10,7 @@
   "type": "module",
   "scripts": {
     "setup": "yarn && husky install",
-    "api:generate": "npx swagger-typescript-api -p http://localhost:8000/docs-json -o ./src/shared/api --modular",
+    "api:generate": "npx openapi-typescript http://localhost:8000/docs-json --output ./src/shared/api/generated.ts",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -45,6 +45,7 @@
     "eslint": "^8.41.0",
     "eslint-kit": "^10.0.0",
     "husky": "^8.0.0",
+    "openapi-typescript": "^6.7.6",
     "postcss-preset-env": "^9.5.10",
     "postcss-sort-media-queries": "^5.2.0",
     "prettier": "^3.0.0",
