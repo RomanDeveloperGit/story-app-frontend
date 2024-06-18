@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.1.0...v1.2.0) (2024-06-18)
+
+
+### Features
+
+* **changelog:** technical commit for trigger semantic bot ([77ace45](https://github.com/RomanDeveloperGit/story-app-frontend/commit/77ace45d260afd18be96651c50fe175a974eacf8))
 
 # [1.1.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.0.0...v1.1.0) (2024-06-18)
 
