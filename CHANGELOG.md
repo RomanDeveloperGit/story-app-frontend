@@ -1,3 +1,4 @@
+
 # [1.1.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.0.0...v1.1.0) (2024-06-18)
 
 
