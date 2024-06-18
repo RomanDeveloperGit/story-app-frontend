@@ -1,11 +1,15 @@
 import React from 'react';
 
+import { ChakraProvider } from '@chakra-ui/react';
+
 import { AppRouterProvider } from './router';
 
 import './app.scss';
 
-// TODO: внедрить ErrorBoundary
 export const App: React.FC = () => {
-  // chakra
-  return <AppRouterProvider />;
+  return (
+    <ChakraProvider>
+      <AppRouterProvider />
+    </ChakraProvider>
+  );
 };
