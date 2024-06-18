@@ -7,7 +7,9 @@ module.exports = configure({
       sort: {
         newline: true,
         groups: [
-          ['react', 'effector', 'antd'],
+          ['react'],
+          ['effector', 'atomic'],
+          ['chakra'],
           ['^@?\\w'],
           ['^@/app', '^@/pages', '^@/widgets', '^@/features', '^@/entities', '^@/shared'],
           ['^\\.'],
