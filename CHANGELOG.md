@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.2.0...v1.3.0) (2024-06-20)
+
+
+### Features
+
+* add main, log-in, sign-up pages and layout ([930081e](https://github.com/RomanDeveloperGit/story-app-frontend/commit/930081ecc3bed0214c794b026cf435365f8a8f76))
+
 # [1.2.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.1.0...v1.2.0) (2024-06-18)
 
 
