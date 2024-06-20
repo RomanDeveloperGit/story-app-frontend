@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.3.0...v1.3.1) (2024-06-20)
+
+
+### Bug Fixes
+
+* **scss-declarations:** return saving .d.ts files for styles in git ([179b225](https://github.com/RomanDeveloperGit/story-app-frontend/commit/179b225e7496813d140f15fb421de1e18f1e92d1))
+
 # [1.3.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.2.0...v1.3.0) (2024-06-20)
 
 
