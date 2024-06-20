@@ -3,7 +3,12 @@ An application for reading and writing stories. And, I hope, it will be useful t
 
 Main Stack: TS, React, Effector, Atomic Router, Chakra UI, FSD, Vite
 
-<!-- TODO: добавить информацию о ENV -->
+### Changes in my interpretation of FSD:
+1. "shared" is called "infrastructure".
+2. The logic moves from the pages layer to the entity/feature/widgets layers when it ceases to be unique for only one page.
+
+### About ENV: 
+Not yet
 
 ## [From Vite README] React + TypeScript + Vite
 
