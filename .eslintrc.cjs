@@ -12,7 +12,7 @@ module.exports = configure({
           ['chakra'],
           ['effector', 'atomic'],
           ['^@?\\w'],
-          ['^@/app', '^@/pages', '^@/widgets', '^@/features', '^@/entities', '^@/shared'],
+          ['^@/app', '^@/pages', '^@/layouts', '^@/widgets', '^@/features', '^@/entities', '^@/shared'],
           ['^\\.'],
           ['.css']
         ],
