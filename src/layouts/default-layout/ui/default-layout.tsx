@@ -3,7 +3,7 @@ import { FC, ReactNode } from 'react';
 import { Footer } from './footer/footer';
 import { Header } from './header/header';
 
-import styles from './default-layout.module.scss';
+import styles from './default-layout.module.css';
 
 interface Props {
   children: ReactNode;

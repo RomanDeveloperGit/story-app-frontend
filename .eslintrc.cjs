@@ -8,12 +8,13 @@ module.exports = configure({
         newline: true,
         groups: [
           ['react'],
-          ['effector', 'atomic'],
+          ['react-hook-form', '@hookform'],
           ['chakra'],
+          ['effector', 'atomic'],
           ['^@?\\w'],
           ['^@/app', '^@/pages', '^@/widgets', '^@/features', '^@/entities', '^@/shared'],
           ['^\\.'],
-          ['.scss', '.css']
+          ['.css']
         ],
       },
     }),
