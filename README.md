@@ -1,7 +1,7 @@
 # story-app-frontend
 An application for reading and writing stories. And, I hope, it will be useful to the FSD community.
 
-Main Stack: TS, React, Effector, Atomic Router, Chakra UI, FSD, Vite
+Main Stack: TS, React, Effector, Atomic Router, Mantine UI, FSD, Vite
 
 ### Changes in my interpretation of FSD:
 1. The "shared" layer is called the "infrastructure" layer.

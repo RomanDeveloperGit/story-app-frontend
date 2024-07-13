@@ -9,10 +9,10 @@ module.exports = configure({
         groups: [
           ['react'],
           ['react-hook-form', '@hookform'],
-          ['chakra'],
+          ['mantine', 'tabler'],
           ['effector', 'atomic'],
           ['^@?\\w'],
-          ['^@/app', '^@/pages', '^@/layouts', '^@/widgets', '^@/features', '^@/entities', '^@/shared'],
+          ['^@/infrastructure', '^@/entities', '^@/features', '^@/widgets', '^@/layouts', '^@/pages', '^@/app'],
           ['^\\.'],
           ['.css']
         ],

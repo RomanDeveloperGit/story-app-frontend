@@ -1,10 +1,30 @@
-.defaultLayout {
-  height: 100vh;
-
+.header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px;
 }
 
-.content {
+.cursorPointer {
+  cursor: pointer;
+}
+
+.buttonBox {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.main {
   height: 100%;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
 }

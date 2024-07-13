@@ -1,6 +1,7 @@
 import { createHistoryRouter, createRoute } from 'atomic-router';
 import { createRoutesView } from 'atomic-router-react';
 
+import { DefaultLayout } from '@/layouts/default-layout';
 import { LogInPage } from '@/pages/log-in';
 import { MainPage } from '@/pages/main';
 import { SignUpPage } from '@/pages/sign-up';
@@ -29,14 +30,17 @@ export const RoutesView = createRoutesView({
     {
       route: mainPageRoute,
       view: MainPage,
+      layout: DefaultLayout,
     },
     {
       route: logInPageRoute,
       view: LogInPage,
+      layout: DefaultLayout,
     },
     {
       route: signUpPageRoute,
       view: SignUpPage,
+      layout: DefaultLayout,
     },
   ],
 });

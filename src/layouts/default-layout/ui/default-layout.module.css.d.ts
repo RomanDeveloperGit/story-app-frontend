@@ -1,5 +1,8 @@
 declare const classNames: {
-  readonly defaultLayout: "defaultLayout";
-  readonly content: "content";
+  readonly header: "header";
+  readonly cursorPointer: "cursorPointer";
+  readonly buttonBox: "buttonBox";
+  readonly main: "main";
+  readonly footer: "footer";
 };
 export = classNames;

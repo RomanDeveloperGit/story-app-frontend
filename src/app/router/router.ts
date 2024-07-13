@@ -2,13 +2,13 @@ import { createHistoryRouter, redirect } from 'atomic-router';
 
 import { createBrowserHistory } from 'history';
 
-import { logInPageRoute, mainPageRoute, routes, signUpPageRoute } from './routes';
-
 import {
   redirectToLogInPage,
   redirectToMainPage,
   redirectToSignUpPage,
 } from '@/layouts/default-layout';
+
+import { logInPageRoute, mainPageRoute, routes, signUpPageRoute } from './routes';
 
 export const router = createHistoryRouter({ routes });
 
