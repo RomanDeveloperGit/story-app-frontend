@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.3.1...v1.4.0) (2024-07-13)
+
+
+### Features
+
+* add sign up process ([15782dc](https://github.com/RomanDeveloperGit/story-app-frontend/commit/15782dc432a50b7d0fcbdf40b803054544c6dc7d))
+
 ## [1.3.1](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.3.0...v1.3.1) (2024-06-20)
 
 
