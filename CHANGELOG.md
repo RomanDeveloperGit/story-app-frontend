@@ -1,3 +1,11 @@
+# [1.5.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.4.0...v1.5.0) (2024-07-14)
+
+
+### Features
+
+* add log in process ([6b30e8c](https://github.com/RomanDeveloperGit/story-app-frontend/commit/6b30e8c097b511f560c60e6bf7af53e9af041e36))
+* add notification manager ([577d707](https://github.com/RomanDeveloperGit/story-app-frontend/commit/577d7072e2d831ff953cdc12b3391950a3f42345))
+
 # [1.4.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.3.1...v1.4.0) (2024-07-13)
 
 
