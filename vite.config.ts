@@ -21,6 +21,7 @@ export default defineConfig({
     host: true,
     strictPort: true,
     port: 3000,
+    // It's only for dev mode. In the prod, there is nginx that proxies requests to the backend
     proxy: {
       '/api': {
         target: 'http://localhost:8000',
@@ -34,6 +35,8 @@ export default defineConfig({
     host: true,
     strictPort: true,
     port: 80,
+    // It's only for dev mode as well. In the prod, there is nginx that proxies requests to the backend.
+    // And we don't use the "preview" command in the prod
     proxy: {
       '/api': {
         target: 'http://localhost:8000',
