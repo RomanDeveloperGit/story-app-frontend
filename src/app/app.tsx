@@ -4,6 +4,7 @@ import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 
 import { ErrorBoundary } from '@/infrastructure/ui/error-boundary';
+import { NotificationManager } from '@/infrastructure/ui/notification-manager';
 
 import { AppRouterProvider } from './router';
 
@@ -14,6 +15,7 @@ export const App: React.FC = () => {
     <MantineProvider>
       <ErrorBoundary>
         <AppRouterProvider />
+        <NotificationManager />
       </ErrorBoundary>
     </MantineProvider>
   );
