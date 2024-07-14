@@ -7,26 +7,26 @@ import { Button, PasswordInput, TextInput } from '@mantine/core';
 
 import { useUnit } from 'effector-react';
 
-import { $createAccountError, createAccount, createAccountFx } from '../model/create-account';
-import { CreateAccountSchema, createAccountSchema } from '../model/create-account-schema';
+import { $signUpError, signUp, signUpFx } from '../model/sign-up';
+import { SignUpSchema, signUpSchema } from '../model/sign-up-schema';
 
-import styles from './sign-up.module.css';
+import styles from './sign-up-page.module.css';
 
 export const SignUpPage = () => {
-  const isPending = useUnit(createAccountFx.pending);
-  const error = useUnit($createAccountError);
+  const isPending = useUnit(signUpFx.pending);
+  const error = useUnit($signUpError);
 
   const {
     handleSubmit,
     register,
     formState: { errors },
     setError,
-  } = useForm<CreateAccountSchema>({
-    resolver: zodResolver(createAccountSchema),
+  } = useForm<SignUpSchema>({
+    resolver: zodResolver(signUpSchema),
   });
 
   const onSubmit = handleSubmit((data) => {
-    createAccount(data);
+    signUp(data);
   });
 
   useEffect(() => {

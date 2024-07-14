@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const createAccountSchema = z
+export const signUpSchema = z
   .object({
     firstName: z.string().min(2).max(20),
     lastName: z.string().min(2).max(20),
@@ -12,4 +12,4 @@ export const createAccountSchema = z
     path: ['confirmPassword'],
   });
 
-export type CreateAccountSchema = z.infer<typeof createAccountSchema>;
+export type SignUpSchema = z.infer<typeof signUpSchema>;
