@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.5.0...v1.6.0) (2024-07-25)
+
+
+### Features
+
+* add auth system, routes protection and app initializer ([21dc85c](https://github.com/RomanDeveloperGit/story-app-frontend/commit/21dc85c0fdb953e6e9df1bdb8f4dbc8678d0c16a))
+
 # [1.5.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.4.0...v1.5.0) (2024-07-14)
 
 
