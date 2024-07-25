@@ -7,7 +7,7 @@ import { Button, PasswordInput, TextInput } from '@mantine/core';
 
 import { useUnit } from 'effector-react';
 
-import { $signUpError, signUp, signUpFx } from '../model/sign-up';
+import { $signUpError, resetSignUpError, signUp, signUpFx } from '../model/sign-up';
 import { SignUpSchema, signUpSchema } from '../model/sign-up-schema';
 
 import styles from './sign-up-page.module.css';
@@ -38,6 +38,12 @@ export const SignUpPage = () => {
       { shouldFocus: true },
     );
   }, [error, setError]);
+
+  useEffect(() => {
+    return () => {
+      resetSignUpError();
+    };
+  }, []);
 
   return (
     <form className={styles.form} onSubmit={onSubmit}>

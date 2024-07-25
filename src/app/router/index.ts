@@ -1,1 +1,0 @@
-export { AppRouterProvider } from './provider';

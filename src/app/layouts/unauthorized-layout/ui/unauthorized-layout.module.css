@@ -1,0 +1,12 @@
+.buttonBox {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-left: auto;
+}
+
+.main {
+  height: 100%;
+}

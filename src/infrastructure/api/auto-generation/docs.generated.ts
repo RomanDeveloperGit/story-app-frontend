@@ -6,13 +6,19 @@
 
 export interface paths {
   "/api/v1/auth/log-in": {
+    /** The Refresh Token is stored in browser cookies */
     post: operations["AuthController_logIn"];
   };
   "/api/v1/auth/sign-up": {
+    /** The Refresh Token is stored in browser cookies */
     post: operations["AuthController_signUp"];
   };
   "/api/v1/auth/refresh": {
+    /** The Refresh Token is stored in browser cookies */
     post: operations["AuthController_refresh"];
+  };
+  "/api/v1/auth/access-token/check": {
+    get: operations["AuthController_checkAccessToken"];
   };
 }
 
@@ -24,9 +30,19 @@ export interface components {
       email: string;
       password: string;
     };
+    AuthorizedUser: {
+      id: number;
+      email: string;
+      firstName: string;
+      lastName: string;
+      /** Format: date-time */
+      createdAt: string;
+      /** Format: date-time */
+      updatedAt: string;
+    };
     LogInResponse: {
       accessToken: string;
-      refreshToken: string;
+      user: components["schemas"]["AuthorizedUser"];
     };
     SignUpRequest: {
       email: string;
@@ -36,11 +52,21 @@ export interface components {
     };
     SignUpResponse: {
       accessToken: string;
-      refreshToken: string;
+      user: components["schemas"]["AuthorizedUser"];
     };
     RefreshResponse: {
       accessToken: string;
-      refreshToken: string;
+      user: components["schemas"]["AuthorizedUser"];
+    };
+    CheckAccessTokenResponse: {
+      id: number;
+      email: string;
+      firstName: string;
+      lastName: string;
+      /** Format: date-time */
+      createdAt: string;
+      /** Format: date-time */
+      updatedAt: string;
     };
   };
   responses: never;
@@ -56,6 +82,7 @@ export type external = Record<string, never>;
 
 export interface operations {
 
+  /** The Refresh Token is stored in browser cookies */
   AuthController_logIn: {
     requestBody: {
       content: {
@@ -70,6 +97,7 @@ export interface operations {
       };
     };
   };
+  /** The Refresh Token is stored in browser cookies */
   AuthController_signUp: {
     requestBody: {
       content: {
@@ -84,11 +112,21 @@ export interface operations {
       };
     };
   };
+  /** The Refresh Token is stored in browser cookies */
   AuthController_refresh: {
     responses: {
       201: {
         content: {
           "application/json": components["schemas"]["RefreshResponse"];
+        };
+      };
+    };
+  };
+  AuthController_checkAccessToken: {
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["CheckAccessTokenResponse"];
         };
       };
     };

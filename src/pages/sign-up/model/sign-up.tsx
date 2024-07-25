@@ -4,26 +4,18 @@ import { createEffect, createEvent, createStore, sample } from 'effector';
 
 import { omit } from 'lodash';
 
-import { api, ApiError, Dto, transformToApiError } from '@/infrastructure/api';
+import { api, Dto } from '@/infrastructure/api';
 import { saveAccessTokenInLocalStorage } from '@/infrastructure/lib/auth';
+import { createApiEffect } from '@/infrastructure/lib/effector';
+
+import { setAuthorizedUser } from '@/entities/auth';
 
 import { SignUpSchema } from './sign-up-schema';
 
 export const signUp = createEvent<SignUpSchema>();
-export const signUpFx = createEffect<Dto['SignUpRequest'], Dto['SignUpResponse'], ApiError>(
-  async (data) => {
-    try {
-      const tokens = await api
-        .post('/api/v1/auth/sign-up', { json: data })
-        .json<Dto['SignUpResponse']>();
-
-      saveAccessTokenInLocalStorage(tokens.accessToken);
-
-      return tokens;
-    } catch (error) {
-      throw await transformToApiError(error);
-    }
-  },
+export const signUpFx = createApiEffect<Dto['SignUpRequest'], Dto['SignUpResponse']>(
+  async (params) =>
+    api.post('/api/v1/auth/sign-up', { json: params }).json<Dto['SignUpResponse']>(),
 );
 
 sample({
@@ -34,27 +26,48 @@ sample({
   target: signUpFx,
 });
 
-export const $signUpError = createStore<string | null>(null);
+export const signUpSuccessFx = createEffect<Dto['SignUpResponse'], Dto['SignUpResponse']>(
+  (response) => {
+    saveAccessTokenInLocalStorage(response.accessToken);
+    setAuthorizedUser(response.user);
 
-const signUpErrorFx = createEffect<ApiError, void>((data) => {
-  if (!data.code) {
     notifications.show({
-      title: 'Registration error',
-      message: 'Something went wrong',
-      color: 'red',
+      message: 'You registered an account',
+      color: 'green',
     });
-  }
-});
+
+    return response;
+  },
+);
 
 sample({
-  clock: signUpFx.failData,
-  target: signUpErrorFx,
+  clock: signUpFx.doneData,
+  target: signUpSuccessFx,
 });
 
+export const resetSignUpError = createEvent();
+
+export const $signUpError = createStore<string | null>(null);
 $signUpError
   .on(signUpFx.failData, (state, payload) => {
     if (payload.code === 'ERROR_EMAIL_TAKEN') return 'A user with this email already exists';
 
     return state;
   })
-  .reset(signUp);
+  .reset(signUp, resetSignUpError);
+
+const signUpUnexpectedErrorFx = createEffect<void, void>(() => {
+  notifications.show({
+    title: 'Registration error',
+    message: 'Something went wrong',
+    color: 'red',
+  });
+});
+
+sample({
+  clock: signUpFx.failData,
+  filter(error) {
+    return !error.code;
+  },
+  target: signUpUnexpectedErrorFx,
+});

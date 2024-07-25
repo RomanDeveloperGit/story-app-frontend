@@ -12,7 +12,12 @@ module.exports = configure({
           ['mantine', 'tabler'],
           ['effector', 'atomic'],
           ['^@?\\w'],
-          ['^@/infrastructure', '^@/entities', '^@/features', '^@/widgets', '^@/layouts', '^@/pages', '^@/app'],
+          ['^@/infrastructure'],
+          ['^@/entities'],
+          ['^@/features'],
+          ['^@/widgets'],
+          ['^@/pages'],
+          ['^@/app'],
           ['^\\.'],
           ['.css']
         ],
