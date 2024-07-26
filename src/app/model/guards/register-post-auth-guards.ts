@@ -1,10 +1,11 @@
 import { createEvent, createStore, sample } from 'effector';
 
+import { logOutSuccessFx } from '@/layouts/authorized-user-layout';
+
 import { logInSuccessFx } from '@/pages/log-in';
 import { signUpSuccessFx } from '@/pages/sign-up';
 
-import { logOutSuccessFx } from '@/app/layouts/authorized-user-layout';
-import { redirectToDefaultPageFx } from '@/app/lib/redirect-to-default-page';
+import { openDefaultPageFx } from '@/app/model/guards/lib/open-default-page';
 
 import { redirectAfterAuthorizationFx } from './lib/redirect-after-authorization';
 import { VisitData } from './lib/visit-data';
@@ -15,6 +16,9 @@ const $visitDataFromUnauthorizedUser = createStore<VisitData>(null);
 $visitDataFromUnauthorizedUser.on(setVisitDataFromUnauthorizedUser, (_, payload) => payload);
 
 export const registerPostAuthGuards = async () => {
+  // TODO: maybe, to move it to auth feature?
+  // TODO: maybe, to rename the "visitDataFromUnauthorizedUser" to just the "visitData"? To think about all cases
+
   sample({
     clock: [logInSuccessFx.done, signUpSuccessFx.done],
     source: $visitDataFromUnauthorizedUser,
@@ -38,6 +42,6 @@ export const registerPostAuthGuards = async () => {
   sample({
     clock: logOutSuccessFx.done,
     fn() {},
-    target: redirectToDefaultPageFx,
+    target: openDefaultPageFx,
   });
 };

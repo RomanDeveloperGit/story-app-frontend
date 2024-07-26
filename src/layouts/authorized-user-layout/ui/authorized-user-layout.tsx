@@ -9,7 +9,8 @@ import { $isAuthorized } from '@/entities/auth';
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
 
-import { redirectToDefaultPageFx } from '@/app/lib/redirect-to-default-page';
+// TODO: fix!!!
+import { openDefaultPageFx } from '@/app/model/guards/lib/open-default-page';
 
 import { logOut } from '../model/log-out';
 
@@ -24,7 +25,7 @@ export const AuthorizedUserLayout: FC<Props> = ({ children }) => {
   if (!isAuthorized) return null;
 
   const redirectToDefaultPage = () => {
-    redirectToDefaultPageFx('user');
+    openDefaultPageFx('user');
   };
 
   const handleLogOut = () => {

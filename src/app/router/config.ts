@@ -1,32 +1,30 @@
-import { createHistoryRouter } from 'atomic-router';
+import { createHistoryRouter, createRoute } from 'atomic-router';
 import { createRoutesView } from 'atomic-router-react';
-
-import { logInPageRoute, signUpPageRoute } from '@/infrastructure/routes';
 
 import { LogInPage } from '@/pages/log-in';
 import { SignUpPage } from '@/pages/sign-up';
 
-import { UnauthorizedLayout } from '@/app/layouts/unauthorized-layout';
+type RoutesViewRouteConfig = Parameters<typeof createRoutesView>[0]['routes'][0];
+type HistoryRouterRouteConfig = Parameters<typeof createHistoryRouter>['0']['routes'][0] & {
+  route: Exclude<Parameters<typeof createHistoryRouter>['0']['routes'][0]['route'], unknown[]>;
+};
 
-export type RouteConfig = Parameters<typeof createRoutesView>[0]['routes'][0] &
-  Parameters<typeof createHistoryRouter>['0']['routes'][0] & {
-    route: Exclude<Parameters<typeof createHistoryRouter>['0']['routes'][0]['route'], unknown[]>;
-  };
+export type RouteConfig = Omit<RoutesViewRouteConfig & HistoryRouterRouteConfig, 'layout'>;
 
 type RouteConfigs = RouteConfig[];
 
+export const logInPageRoute = createRoute();
+export const signUpPageRoute = createRoute();
 export const unauthorizedRouteConfigs = [
   {
     path: '/log-in',
     route: logInPageRoute,
     view: LogInPage,
-    layout: UnauthorizedLayout,
   },
   {
     path: '/sign-up',
     route: signUpPageRoute,
     view: SignUpPage,
-    layout: UnauthorizedLayout,
   },
 ] satisfies RouteConfigs;
 

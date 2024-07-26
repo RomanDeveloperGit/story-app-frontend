@@ -1,12 +1,11 @@
 import type { RouteInstance } from 'atomic-router';
 
-import { logInPageRoute } from '@/infrastructure/routes';
-
 import { Role } from '@/entities/auth';
 
 import {
   authorizedAdminRouteConfigs,
   authorizedUserRouteConfigs,
+  logInPageRoute,
   RouteConfig,
   unauthorizedRouteConfigs,
 } from '@/app/router/config';

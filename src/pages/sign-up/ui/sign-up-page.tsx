@@ -7,6 +7,8 @@ import { Button, PasswordInput, TextInput } from '@mantine/core';
 
 import { useUnit } from 'effector-react';
 
+import { UnauthorizedLayout } from '@/layouts/unauthorized-layout';
+
 import { $signUpError, resetSignUpError, signUp, signUpFx } from '../model/sign-up';
 import { SignUpSchema, signUpSchema } from '../model/sign-up-schema';
 
@@ -46,40 +48,42 @@ export const SignUpPage = () => {
   }, []);
 
   return (
-    <form className={styles.form} onSubmit={onSubmit}>
-      <TextInput
-        {...register('firstName')}
-        label="First name"
-        error={errors.firstName?.message}
-        disabled={isPending}
-      />
-      <TextInput
-        {...register('lastName')}
-        label="Last name"
-        error={errors.lastName?.message}
-        disabled={isPending}
-      />
-      <TextInput
-        {...register('email')}
-        label="Email"
-        error={errors.email?.message}
-        disabled={isPending}
-      />
-      <PasswordInput
-        {...register('password')}
-        label="Password"
-        error={errors.password?.message}
-        disabled={isPending}
-      />
-      <PasswordInput
-        {...register('confirmPassword')}
-        label="Confirm password"
-        error={errors.confirmPassword?.message}
-        disabled={isPending}
-      />
-      <Button type="submit" loading={isPending}>
-        Create Account
-      </Button>
-    </form>
+    <UnauthorizedLayout>
+      <form className={styles.form} onSubmit={onSubmit}>
+        <TextInput
+          {...register('firstName')}
+          label="First name"
+          error={errors.firstName?.message}
+          disabled={isPending}
+        />
+        <TextInput
+          {...register('lastName')}
+          label="Last name"
+          error={errors.lastName?.message}
+          disabled={isPending}
+        />
+        <TextInput
+          {...register('email')}
+          label="Email"
+          error={errors.email?.message}
+          disabled={isPending}
+        />
+        <PasswordInput
+          {...register('password')}
+          label="Password"
+          error={errors.password?.message}
+          disabled={isPending}
+        />
+        <PasswordInput
+          {...register('confirmPassword')}
+          label="Confirm password"
+          error={errors.confirmPassword?.message}
+          disabled={isPending}
+        />
+        <Button type="submit" loading={isPending}>
+          Create Account
+        </Button>
+      </form>
+    </UnauthorizedLayout>
   );
 };

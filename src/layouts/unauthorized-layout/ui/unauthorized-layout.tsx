@@ -4,12 +4,13 @@ import { Button } from '@mantine/core';
 
 import { useUnit } from 'effector-react';
 
-import { logInPageRoute, signUpPageRoute } from '@/infrastructure/routes';
-
 import { $isAuthorized } from '@/entities/auth';
 
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
+
+// TODO: fix!!!
+import { logInPageRoute, signUpPageRoute } from '@/app/router/config';
 
 import styles from './unauthorized-layout.module.css';
 

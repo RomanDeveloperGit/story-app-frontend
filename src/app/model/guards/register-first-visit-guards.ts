@@ -7,11 +7,10 @@ import { createApiEffect } from '@/infrastructure/lib/effector';
 
 import { setAuthorizedUser } from '@/entities/auth';
 
-import { redirectToDefaultPageFx } from '@/app/lib/redirect-to-default-page';
-
 import { availableRoutes } from '../config';
 import { findRouteWithParsedParamsByPath } from './lib/find-route-with-parsed-params-by-path';
 import { redirectAfterAuthorizationFx } from './lib/redirect-after-authorization';
+import { openDefaultPageFx } from './lib/open-default-page';
 import { VisitData } from './lib/visit-data';
 import { setVisitDataFromUnauthorizedUser } from './register-post-auth-guards';
 
@@ -49,7 +48,7 @@ export const registerFirstVisitGuards = async () => {
     if (!foundRouteData) {
       setVisitDataFromUnauthorizedUser(visitData);
 
-      redirectToDefaultPageFx();
+      openDefaultPageFx();
     }
   }
 };
