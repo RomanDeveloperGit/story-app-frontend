@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.6.0...v1.6.1) (2024-07-27)
+
+
+### Bug Fixes
+
+* add role by backend spec generation and refactor constant names ([633b406](https://github.com/RomanDeveloperGit/story-app-frontend/commit/633b406fb74e8f8c3f62de0ace4654cb25e8c3e9))
+
 # [1.6.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.5.0...v1.6.0) (2024-07-25)
 
 
