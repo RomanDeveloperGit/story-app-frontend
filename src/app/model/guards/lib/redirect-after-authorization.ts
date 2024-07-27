@@ -1,22 +1,22 @@
 import { createEffect } from 'effector';
 
-import { Role } from '@/entities/auth';
+import { Dto } from '@/infrastructure/api';
 
-import { availableRoutes } from '../../config';
+import { AVAILABLE_ROUTES } from '../../config';
 import { findRouteWithParsedParamsByPath } from './find-route-with-parsed-params-by-path';
 import { openDefaultPageFx } from './open-default-page';
 import { VisitData } from './visit-data';
 
 export const redirectAfterAuthorizationFx = createEffect<
   {
-    role: Role;
+    role: Dto['AuthorizedUser']['role'];
     visitData: VisitData;
   },
   void
 >(({ role, visitData }) => {
   if (!visitData) return openDefaultPageFx(role);
 
-  const foundRouteData = findRouteWithParsedParamsByPath(visitData.path, availableRoutes[role]);
+  const foundRouteData = findRouteWithParsedParamsByPath(visitData.path, AVAILABLE_ROUTES[role]);
   if (!foundRouteData) return openDefaultPageFx(role);
 
   foundRouteData.route.navigate({

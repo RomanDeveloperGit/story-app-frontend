@@ -2,10 +2,10 @@ import { FC } from 'react';
 
 import { createRoutesView, RouterProvider } from 'atomic-router-react';
 
-import { routeConfigs } from './config';
+import { ROUTE_CONFIGS } from './config';
 import { router } from './router';
 
-const RoutesView = createRoutesView({ routes: routeConfigs });
+const RoutesView = createRoutesView({ routes: ROUTE_CONFIGS });
 
 export const AppRouter: FC = () => {
   return (

@@ -20,12 +20,12 @@ export const registerPostAuthGuards = async () => {
   // TODO: maybe, to rename the "visitDataFromUnauthorizedUser" to just the "visitData"? To think about all cases
 
   sample({
-    clock: [logInSuccessFx.done, signUpSuccessFx.done],
+    clock: [logInSuccessFx.doneData, signUpSuccessFx.doneData],
     source: $visitDataFromUnauthorizedUser,
-    fn(sourceData) {
+    fn(visitDataFromUnauthorizedUser, authorizationData) {
       return {
-        visitData: sourceData,
-        role: 'user', // temporary
+        visitData: visitDataFromUnauthorizedUser,
+        role: authorizationData.user.role,
       } satisfies Parameters<typeof redirectAfterAuthorizationFx>[0];
     },
     target: redirectAfterAuthorizationFx,

@@ -13,15 +13,14 @@ import { setAuthorizedUser } from '@/entities/auth';
 import { SignUpSchema } from './sign-up-schema';
 
 export const signUp = createEvent<SignUpSchema>();
-export const signUpFx = createApiEffect<Dto['SignUpRequest'], Dto['SignUpResponse']>(
-  async (params) =>
-    api.post('/api/v1/auth/sign-up', { json: params }).json<Dto['SignUpResponse']>(),
+export const signUpFx = createApiEffect<Dto['SignUpRequest'], Dto['SignUpResponse']>(async (data) =>
+  api.post('/api/v1/auth/sign-up', { json: data }).json<Dto['SignUpResponse']>(),
 );
 
 sample({
   clock: signUp,
-  fn(clockData) {
-    return omit(clockData, 'confirmPassword');
+  fn(data) {
+    return omit(data, 'confirmPassword');
   },
   target: signUpFx,
 });

@@ -15,7 +15,7 @@ type RouteConfigs = RouteConfig[];
 
 export const logInPageRoute = createRoute();
 export const signUpPageRoute = createRoute();
-export const unauthorizedRouteConfigs = [
+export const UNAUTHORIZED_ROUTE_CONFIGS = [
   {
     path: '/log-in',
     route: logInPageRoute,
@@ -28,12 +28,12 @@ export const unauthorizedRouteConfigs = [
   },
 ] satisfies RouteConfigs;
 
-export const authorizedUserRouteConfigs = [] satisfies RouteConfigs;
+export const AUTHORIZED_USER_ROUTE_CONFIGS = [] satisfies RouteConfigs;
 
-export const authorizedAdminRouteConfigs = [] satisfies RouteConfigs;
+export const AUTHORIZED_ADMIN_ROUTE_CONFIGS = [] satisfies RouteConfigs;
 
-export const routeConfigs = [
-  ...unauthorizedRouteConfigs,
-  ...authorizedUserRouteConfigs,
-  ...authorizedAdminRouteConfigs,
+export const ROUTE_CONFIGS = [
+  ...UNAUTHORIZED_ROUTE_CONFIGS,
+  ...AUTHORIZED_USER_ROUTE_CONFIGS,
+  ...AUTHORIZED_ADMIN_ROUTE_CONFIGS,
 ] satisfies RouteConfigs;

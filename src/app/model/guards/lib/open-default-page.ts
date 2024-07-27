@@ -1,9 +1,11 @@
 import { createEffect } from 'effector';
 
-import { Role } from '@/entities/auth';
+import { Dto } from '@/infrastructure/api';
 
-import { defaultRoute } from '@/app/model/config';
+import { DEFAULT_ROUTE } from '@/app/model/config';
 
-export const openDefaultPageFx = createEffect<Role | void, void>((role) => {
-  defaultRoute[role || 'unauthorized'].open();
-});
+export const openDefaultPageFx = createEffect<Dto['AuthorizedUser']['role'] | void, void>(
+  (role) => {
+    DEFAULT_ROUTE[role || 'UNAUTHORIZED'].open();
+  },
+);

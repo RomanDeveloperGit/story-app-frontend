@@ -25,7 +25,7 @@ export const AuthorizedUserLayout: FC<Props> = ({ children }) => {
   if (!isAuthorized) return null;
 
   const redirectToDefaultPage = () => {
-    openDefaultPageFx('user');
+    openDefaultPageFx('USER');
   };
 
   const handleLogOut = () => {

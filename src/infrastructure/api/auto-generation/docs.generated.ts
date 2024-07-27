@@ -20,6 +20,10 @@ export interface paths {
   "/api/v1/auth/access-token/check": {
     get: operations["AuthController_checkAccessToken"];
   };
+  "/api/v1/auth/log-out": {
+    /** The Refresh Token is deleted from browser cookies */
+    post: operations["AuthController_logOut"];
+  };
 }
 
 export type webhooks = Record<string, never>;
@@ -31,6 +35,8 @@ export interface components {
       password: string;
     };
     AuthorizedUser: {
+      /** @enum {string} */
+      role: "USER" | "ADMIN";
       id: number;
       email: string;
       firstName: string;
@@ -59,6 +65,8 @@ export interface components {
       user: components["schemas"]["AuthorizedUser"];
     };
     CheckAccessTokenResponse: {
+      /** @enum {string} */
+      role: "USER" | "ADMIN";
       id: number;
       email: string;
       firstName: string;
@@ -128,6 +136,14 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["CheckAccessTokenResponse"];
         };
+      };
+    };
+  };
+  /** The Refresh Token is deleted from browser cookies */
+  AuthController_logOut: {
+    responses: {
+      201: {
+        content: never;
       };
     };
   };

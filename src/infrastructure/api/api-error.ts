@@ -5,7 +5,7 @@ export interface ApiError {
   code: string;
 }
 
-const emptyApiError = {
+const EMPTY_API_ERROR = {
   message: '',
   code: '',
 };
@@ -20,9 +20,9 @@ export const transformToApiError = async (error: unknown): Promise<ApiError> => 
         code: result.code || '',
       };
     } catch (_) {
-      return emptyApiError;
+      return EMPTY_API_ERROR;
     }
   }
 
-  return emptyApiError;
+  return EMPTY_API_ERROR;
 };

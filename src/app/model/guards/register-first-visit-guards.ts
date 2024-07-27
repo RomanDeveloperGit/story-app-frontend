@@ -7,10 +7,10 @@ import { createApiEffect } from '@/infrastructure/lib/effector';
 
 import { setAuthorizedUser } from '@/entities/auth';
 
-import { availableRoutes } from '../config';
+import { AVAILABLE_ROUTES } from '../config';
 import { findRouteWithParsedParamsByPath } from './lib/find-route-with-parsed-params-by-path';
-import { redirectAfterAuthorizationFx } from './lib/redirect-after-authorization';
 import { openDefaultPageFx } from './lib/open-default-page';
+import { redirectAfterAuthorizationFx } from './lib/redirect-after-authorization';
 import { VisitData } from './lib/visit-data';
 import { setVisitDataFromUnauthorizedUser } from './register-post-auth-guards';
 
@@ -36,13 +36,13 @@ export const registerFirstVisitGuards = async () => {
 
     setAuthorizedUser(authorizedUser);
     redirectAfterAuthorizationFx({
-      role: 'user', // temporary
+      role: authorizedUser.role,
       visitData,
     });
   } catch (error) {
     const foundRouteData = findRouteWithParsedParamsByPath(
       visitData.path,
-      availableRoutes.unauthorized,
+      AVAILABLE_ROUTES.UNAUTHORIZED,
     );
 
     if (!foundRouteData) {

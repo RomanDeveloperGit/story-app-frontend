@@ -11,8 +11,8 @@ import { setAuthorizedUser } from '@/entities/auth';
 import { LogInSchema } from './log-in-schema';
 
 export const logIn = createEvent<LogInSchema>();
-export const logInFx = createApiEffect<Dto['LogInRequest'], Dto['LogInResponse']>(async (params) =>
-  api.post('/api/v1/auth/log-in', { json: params }).json<Dto['LogInResponse']>(),
+export const logInFx = createApiEffect<Dto['LogInRequest'], Dto['LogInResponse']>(async (data) =>
+  api.post('/api/v1/auth/log-in', { json: data }).json<Dto['LogInResponse']>(),
 );
 
 sample({
