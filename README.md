@@ -1,14 +1,20 @@
 # story-app-frontend
+
 An application for reading and writing stories. And, I hope, it will be useful to the FSD community.
 
 Main Stack: TS, React, Effector, Atomic Router, Mantine UI, FSD, Vite
 
 ### Changes in my interpretation of FSD:
+
 1. The "shared" layer is called the "infrastructure" layer.
 2. The logic moves from the pages layer to the entity/feature/widgets layers when it ceases to be unique for only one page.
 3. The "Layouts" layer is designed for page layouts, the wrapping layer (semantically it doesn't fit the widget)
+4. The "infrastructure/router" segment is designed to provide the minimum necessary information on all layers above (for example, a redirect at the end of a process). Therefore, we have only information about the path and the instance there.
 
-### About ENV: 
+    \*Binding to the view is done in the app/router!
+
+### About ENV:
+
 Not yet
 
 ## [From Vite README] React + TypeScript + Vite
@@ -35,7 +41,7 @@ export default {
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
