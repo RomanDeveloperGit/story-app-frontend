@@ -4,9 +4,9 @@ import { createEffect, createEvent, createStore, sample } from 'effector';
 
 import { omit } from 'lodash';
 
-import { api, Dto } from '@/infrastructure/api';
-import { saveAccessTokenInLocalStorage } from '@/infrastructure/lib/auth';
-import { createApiEffect } from '@/infrastructure/lib/effector';
+import { api, Dto } from '@/shared/api';
+import { saveAccessTokenInLocalStorage } from '@/shared/lib/auth';
+import { createApiEffect } from '@/shared/lib/effector';
 
 import {
   $savedLinkFromFirstVisit,

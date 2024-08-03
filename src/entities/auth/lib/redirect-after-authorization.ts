@@ -1,10 +1,10 @@
-import { Dto } from '@/infrastructure/api';
+import { Dto } from '@/shared/api';
 import {
   DEFAULT_ROUTE,
   getRouteInstance,
   openLinkWithProtection,
   PERMITTED_ROUTES,
-} from '@/infrastructure/router';
+} from '@/shared/router';
 
 export const redirectAfterAuthorization = async ({
   role,

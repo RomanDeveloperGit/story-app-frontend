@@ -6,12 +6,11 @@ Main Stack: TS, React, Effector, Atomic Router, Mantine UI, FSD, Vite
 
 ### Changes in my interpretation of FSD:
 
-1. The "shared" layer is called the "infrastructure" layer.
-2. The logic moves from the pages layer to the entity/feature/widgets layers when it ceases to be unique for only one page.
-3. The "Layouts" layer is designed for page layouts, the wrapping layer (semantically it doesn't fit the widget)
-4. The "infrastructure/router" segment is designed to provide the minimum necessary information on all layers above (for example, a redirect at the end of a process). Therefore, we have only information about the path and the instance there.
+1. The logic moves from the pages layer to the entity/feature/widgets layers when it ceases to be unique for only one page.
+2. The "Layouts" layer is designed for page layouts, the wrapping layer (semantically it doesn't fit the widget)
+3. The "shared/router" segment is designed to provide the minimum necessary information on all layers above (for example, a redirect at the end of a process). Therefore, we have only information about the path and the instance there.
 
-    \*Binding to the view is done in the app/router!
+   \*Binding to the view is done in the app/router!
 
 ### About ENV:
 

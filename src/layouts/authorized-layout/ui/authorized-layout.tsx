@@ -4,7 +4,7 @@ import { Button } from '@mantine/core';
 
 import { useUnit } from 'effector-react';
 
-import { DEFAULT_ROUTE, getRouteInstance } from '@/infrastructure/router';
+import { DEFAULT_ROUTE, getRouteInstance } from '@/shared/router';
 
 import { $isAuthorized } from '@/entities/auth';
 

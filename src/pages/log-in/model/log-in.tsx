@@ -2,9 +2,9 @@ import { notifications } from '@mantine/notifications';
 
 import { createEffect, createEvent, sample } from 'effector';
 
-import { api, ApiError, Dto } from '@/infrastructure/api';
-import { saveAccessTokenInLocalStorage } from '@/infrastructure/lib/auth';
-import { createApiEffect } from '@/infrastructure/lib/effector';
+import { api, ApiError, Dto } from '@/shared/api';
+import { saveAccessTokenInLocalStorage } from '@/shared/lib/auth';
+import { createApiEffect } from '@/shared/lib/effector';
 
 import {
   $savedLinkFromFirstVisit,

@@ -5,11 +5,10 @@ import { LoadingOverlay, MantineProvider } from '@mantine/core';
 
 import { useUnit } from 'effector-react';
 
-import { ErrorBoundary } from '@/infrastructure/ui/error-boundary';
-import { NotificationManager } from '@/infrastructure/ui/notification-manager';
-
-import { $isAppVisible } from './model/model';
-import { AppRouter } from './router/app-router';
+import { $isAppVisible } from '../model/model';
+import { AppRouter } from '../router/app-router';
+import { ErrorBoundary } from './error-boundary/error-boundary';
+import { NotificationManager } from './notification-manager/notification-manager';
 
 import './app.css';
 

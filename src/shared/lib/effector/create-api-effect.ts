@@ -1,6 +1,6 @@
 import { createEffect } from 'effector';
 
-import { ApiError, transformToApiError } from '@/infrastructure/api';
+import { ApiError, transformToApiError } from '@/shared/api';
 
 export const createApiEffect = <Params, Done>(handler: (params: Params) => Promise<Done>) => {
   return createEffect<Params, Done, ApiError>(async (params) => {

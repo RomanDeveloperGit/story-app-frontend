@@ -1,4 +1,4 @@
-import { logInRoute, ROUTES, signUpRoute } from '@/infrastructure/router';
+import { logInRoute, ROUTES, signUpRoute } from '@/shared/router';
 
 import { LogInPage } from '@/pages/log-in';
 import { SignUpPage } from '@/pages/sign-up';

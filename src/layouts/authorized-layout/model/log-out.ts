@@ -2,13 +2,13 @@ import { notifications } from '@mantine/notifications';
 
 import { createEffect, createEvent, sample } from 'effector';
 
-import { api } from '@/infrastructure/api';
+import { api } from '@/shared/api';
 import {
   makeHeadersWithFilledAccessToken,
   removeAccessTokenFromLocalStorage,
-} from '@/infrastructure/lib/auth';
-import { createApiEffect } from '@/infrastructure/lib/effector';
-import { DEFAULT_ROUTE, getRouteInstance } from '@/infrastructure/router';
+} from '@/shared/lib/auth';
+import { createApiEffect } from '@/shared/lib/effector';
+import { DEFAULT_ROUTE, getRouteInstance } from '@/shared/router';
 
 import { setAuthorizedUser } from '@/entities/auth';
 
