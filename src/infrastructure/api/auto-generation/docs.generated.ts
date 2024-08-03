@@ -3,26 +3,25 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
-  "/api/v1/auth/log-in": {
+  '/api/v1/auth/log-in': {
     /** The Refresh Token is stored in browser cookies */
-    post: operations["AuthController_logIn"];
+    post: operations['AuthController_logIn'];
   };
-  "/api/v1/auth/sign-up": {
+  '/api/v1/auth/sign-up': {
     /** The Refresh Token is stored in browser cookies */
-    post: operations["AuthController_signUp"];
+    post: operations['AuthController_signUp'];
   };
-  "/api/v1/auth/refresh": {
+  '/api/v1/auth/refresh': {
     /** The Refresh Token is stored in browser cookies */
-    post: operations["AuthController_refresh"];
+    post: operations['AuthController_refresh'];
   };
-  "/api/v1/auth/access-token/check": {
-    get: operations["AuthController_checkAccessToken"];
+  '/api/v1/auth/access-token/check': {
+    get: operations['AuthController_checkAccessToken'];
   };
-  "/api/v1/auth/log-out": {
+  '/api/v1/auth/log-out': {
     /** The Refresh Token is deleted from browser cookies */
-    post: operations["AuthController_logOut"];
+    post: operations['AuthController_logOut'];
   };
 }
 
@@ -36,7 +35,7 @@ export interface components {
     };
     AuthorizedUser: {
       /** @enum {string} */
-      role: "USER" | "ADMIN";
+      role: 'USER' | 'ADMIN';
       id: number;
       email: string;
       firstName: string;
@@ -48,7 +47,7 @@ export interface components {
     };
     LogInResponse: {
       accessToken: string;
-      user: components["schemas"]["AuthorizedUser"];
+      user: components['schemas']['AuthorizedUser'];
     };
     SignUpRequest: {
       email: string;
@@ -58,15 +57,15 @@ export interface components {
     };
     SignUpResponse: {
       accessToken: string;
-      user: components["schemas"]["AuthorizedUser"];
+      user: components['schemas']['AuthorizedUser'];
     };
     RefreshResponse: {
       accessToken: string;
-      user: components["schemas"]["AuthorizedUser"];
+      user: components['schemas']['AuthorizedUser'];
     };
     CheckAccessTokenResponse: {
       /** @enum {string} */
-      role: "USER" | "ADMIN";
+      role: 'USER' | 'ADMIN';
       id: number;
       email: string;
       firstName: string;
@@ -89,18 +88,17 @@ export type $defs = Record<string, never>;
 export type external = Record<string, never>;
 
 export interface operations {
-
   /** The Refresh Token is stored in browser cookies */
   AuthController_logIn: {
     requestBody: {
       content: {
-        "application/json": components["schemas"]["LogInRequest"];
+        'application/json': components['schemas']['LogInRequest'];
       };
     };
     responses: {
       201: {
         content: {
-          "application/json": components["schemas"]["LogInResponse"];
+          'application/json': components['schemas']['LogInResponse'];
         };
       };
     };
@@ -109,13 +107,13 @@ export interface operations {
   AuthController_signUp: {
     requestBody: {
       content: {
-        "application/json": components["schemas"]["SignUpRequest"];
+        'application/json': components['schemas']['SignUpRequest'];
       };
     };
     responses: {
       201: {
         content: {
-          "application/json": components["schemas"]["SignUpResponse"];
+          'application/json': components['schemas']['SignUpResponse'];
         };
       };
     };
@@ -125,7 +123,7 @@ export interface operations {
     responses: {
       201: {
         content: {
-          "application/json": components["schemas"]["RefreshResponse"];
+          'application/json': components['schemas']['RefreshResponse'];
         };
       };
     };
@@ -134,7 +132,7 @@ export interface operations {
     responses: {
       200: {
         content: {
-          "application/json": components["schemas"]["CheckAccessTokenResponse"];
+          'application/json': components['schemas']['CheckAccessTokenResponse'];
         };
       };
     };

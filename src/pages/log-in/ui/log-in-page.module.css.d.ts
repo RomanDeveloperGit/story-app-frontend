@@ -1,4 +1,4 @@
 declare const classNames: {
-  readonly form: "form";
+  readonly form: 'form';
 };
 export = classNames;

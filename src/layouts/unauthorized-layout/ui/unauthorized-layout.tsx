@@ -4,13 +4,12 @@ import { Button } from '@mantine/core';
 
 import { useUnit } from 'effector-react';
 
+import { getRouteInstance, logInRoute, signUpRoute } from '@/infrastructure/router';
+
 import { $isAuthorized } from '@/entities/auth';
 
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
-
-// TODO: fix!!!
-import { logInPageRoute, signUpPageRoute } from '@/app/router/config';
 
 import styles from './unauthorized-layout.module.css';
 
@@ -23,11 +22,11 @@ export const UnauthorizedLayout: FC<Props> = ({ children }) => {
   if (isAuthorized) return null;
 
   const redirectToLogInPage = () => {
-    logInPageRoute.open();
+    getRouteInstance(logInRoute).open();
   };
 
   const redirectToSignUpPage = () => {
-    signUpPageRoute.open();
+    getRouteInstance(signUpRoute).open();
   };
 
   return (

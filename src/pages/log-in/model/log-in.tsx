@@ -6,7 +6,12 @@ import { api, ApiError, Dto } from '@/infrastructure/api';
 import { saveAccessTokenInLocalStorage } from '@/infrastructure/lib/auth';
 import { createApiEffect } from '@/infrastructure/lib/effector';
 
-import { setAuthorizedUser } from '@/entities/auth';
+import {
+  $savedLinkFromFirstVisit,
+  redirectAfterAuthorization,
+  resetSavedLinkFromFirstVisit,
+  setAuthorizedUser,
+} from '@/entities/auth';
 
 import { LogInSchema } from './log-in-schema';
 
@@ -20,22 +25,40 @@ sample({
   target: logInFx,
 });
 
-export const logInSuccessFx = createEffect<Dto['LogInResponse'], Dto['LogInResponse']>(
-  (response) => {
-    saveAccessTokenInLocalStorage(response.accessToken);
-    setAuthorizedUser(response.user);
-
-    notifications.show({
-      message: 'You logged into your account',
-      color: 'green',
-    });
-
-    return response;
+export const logInSuccessFx = createEffect<
+  {
+    response: Dto['LogInResponse'];
+    savedLinkFromFirstVisit: string | null;
   },
-);
+  void
+>(({ response, savedLinkFromFirstVisit }) => {
+  saveAccessTokenInLocalStorage(response.accessToken);
+  setAuthorizedUser(response.user);
+
+  redirectAfterAuthorization({
+    role: response.user.role,
+    link: savedLinkFromFirstVisit,
+  });
+
+  if (savedLinkFromFirstVisit) {
+    resetSavedLinkFromFirstVisit();
+  }
+
+  notifications.show({
+    message: 'You logged into your account',
+    color: 'green',
+  });
+});
 
 sample({
   clock: logInFx.doneData,
+  source: $savedLinkFromFirstVisit,
+  fn(savedLinkFromFirstVisit, response) {
+    return {
+      response,
+      savedLinkFromFirstVisit,
+    };
+  },
   target: logInSuccessFx,
 });
 

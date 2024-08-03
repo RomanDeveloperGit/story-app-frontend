@@ -8,7 +8,12 @@ import { api, Dto } from '@/infrastructure/api';
 import { saveAccessTokenInLocalStorage } from '@/infrastructure/lib/auth';
 import { createApiEffect } from '@/infrastructure/lib/effector';
 
-import { setAuthorizedUser } from '@/entities/auth';
+import {
+  $savedLinkFromFirstVisit,
+  redirectAfterAuthorization,
+  resetSavedLinkFromFirstVisit,
+  setAuthorizedUser,
+} from '@/entities/auth';
 
 import { SignUpSchema } from './sign-up-schema';
 
@@ -25,28 +30,46 @@ sample({
   target: signUpFx,
 });
 
-export const signUpSuccessFx = createEffect<Dto['SignUpResponse'], Dto['SignUpResponse']>(
-  (response) => {
-    saveAccessTokenInLocalStorage(response.accessToken);
-    setAuthorizedUser(response.user);
-
-    notifications.show({
-      message: 'You registered an account',
-      color: 'green',
-    });
-
-    return response;
+export const signUpSuccessFx = createEffect<
+  {
+    response: Dto['SignUpResponse'];
+    savedLinkFromFirstVisit: string | null;
   },
-);
+  void
+>(({ response, savedLinkFromFirstVisit }) => {
+  saveAccessTokenInLocalStorage(response.accessToken);
+  setAuthorizedUser(response.user);
+
+  redirectAfterAuthorization({
+    role: response.user.role,
+    link: savedLinkFromFirstVisit,
+  });
+
+  if (savedLinkFromFirstVisit) {
+    resetSavedLinkFromFirstVisit();
+  }
+
+  notifications.show({
+    message: 'You registered an account',
+    color: 'green',
+  });
+});
 
 sample({
   clock: signUpFx.doneData,
+  source: $savedLinkFromFirstVisit,
+  fn(savedLinkFromFirstVisit, response) {
+    return {
+      response,
+      savedLinkFromFirstVisit,
+    };
+  },
   target: signUpSuccessFx,
 });
 
+export const $signUpError = createStore<string | null>(null);
 export const resetSignUpError = createEvent();
 
-export const $signUpError = createStore<string | null>(null);
 $signUpError
   .on(signUpFx.failData, (state, payload) => {
     if (payload.code === 'ERROR_EMAIL_TAKEN') return 'A user with this email already exists';

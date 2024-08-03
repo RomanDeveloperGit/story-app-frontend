@@ -1,5 +1,5 @@
 declare const classNames: {
-  readonly buttonBox: 'buttonBox';
+  readonly headerButton: 'headerButton';
   readonly main: 'main';
 };
 export = classNames;

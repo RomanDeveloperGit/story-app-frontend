@@ -8,6 +8,7 @@ import {
   removeAccessTokenFromLocalStorage,
 } from '@/infrastructure/lib/auth';
 import { createApiEffect } from '@/infrastructure/lib/effector';
+import { DEFAULT_ROUTE, getRouteInstance } from '@/infrastructure/router';
 
 import { setAuthorizedUser } from '@/entities/auth';
 
@@ -24,6 +25,8 @@ sample({
 export const logOutSuccessFx = createEffect<void, void>(() => {
   removeAccessTokenFromLocalStorage();
   setAuthorizedUser(null);
+
+  getRouteInstance(DEFAULT_ROUTE.UNAUTHORIZED).open();
 
   notifications.show({
     message: 'You logged out of your account',

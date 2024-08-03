@@ -1,16 +1,14 @@
 import { createEvent, createStore } from 'effector';
 
-import { registerFirstVisitGuards } from './guards/register-first-visit-guards';
-import { registerPostAuthGuards } from './guards/register-post-auth-guards';
-
-const showApp = createEvent();
+import { registerFirstVisitGuard } from './register-first-visit-guard';
 
 export const $isAppVisible = createStore<boolean>(false);
+const showApp = createEvent();
+
 $isAppVisible.on(showApp, () => true);
 
 export const startApp = async () => {
-  await registerFirstVisitGuards();
-  await registerPostAuthGuards();
+  await registerFirstVisitGuard();
 
   showApp();
 };

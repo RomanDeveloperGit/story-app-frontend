@@ -4,28 +4,27 @@ import { Button } from '@mantine/core';
 
 import { useUnit } from 'effector-react';
 
+import { DEFAULT_ROUTE, getRouteInstance } from '@/infrastructure/router';
+
 import { $isAuthorized } from '@/entities/auth';
 
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
 
-// TODO: fix!!!
-import { openDefaultPageFx } from '@/app/model/guards/lib/open-default-page';
-
 import { logOut } from '../model/log-out';
 
-import styles from './authorized-user-layout.module.css';
+import styles from './authorized-layout.module.css';
 
 interface Props {
   children: ReactNode;
 }
 
-export const AuthorizedUserLayout: FC<Props> = ({ children }) => {
+export const AuthorizedLayout: FC<Props> = ({ children }) => {
   const isAuthorized = useUnit($isAuthorized);
   if (!isAuthorized) return null;
 
   const redirectToDefaultPage = () => {
-    openDefaultPageFx('USER');
+    getRouteInstance(DEFAULT_ROUTE.USER).open();
   };
 
   const handleLogOut = () => {

@@ -14,6 +14,7 @@ interface Props {
 export const Header: FC<Props> = ({ children, onLogoClick }) => {
   return (
     <header className={styles.header}>
+      {/* TODO: to create a normal logo */}
       <Text className={clsx({ [styles.cursorPointer]: Boolean(onLogoClick) })} size="lg">
         Story App
       </Text>
