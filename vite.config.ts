@@ -3,6 +3,13 @@ import react from '@vitejs/plugin-react-swc';
 import sassDts from 'vite-plugin-sass-dts';
 import path from 'path';
 
+const getCookieValue = (cookie: string, key: string) => {
+  const regexp = new RegExp(key + '=([^;]+)');
+  const match = regexp.exec(cookie);
+  
+  return match ? match[1] : null;
+}
+
 export default defineConfig({
   plugins: [react(), sassDts()],
   resolve: {
@@ -25,23 +32,32 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'http://localhost:8000',
+        configure(proxy) {
+          proxy.on('proxyReq', (proxyReq, req) => {
+            if (req.headers.authorization || !req.headers.cookie) return;
+
+            const refreshTokenFromCookie = getCookieValue(req.headers.cookie, 'refresh-token');
+            if (!refreshTokenFromCookie) return;
+
+            // @ts-ignore
+            req.proxyModificationDescription = 'The refresh token from the cookie was added to the Authorization header';
+
+            proxyReq.setHeader('Authorization', `Bearer ${refreshTokenFromCookie}`);
+          });
+
+          proxy.on('proxyRes', (_, req, res) => {
+            // @ts-ignore
+            if (req.proxyModificationDescription) {
+              // @ts-ignore
+              res.setHeader('X-Proxy-Modification', req.proxyModificationDescription)
+            }
+          });
+        },
       },
     },
   },
   build: {
     sourcemap: true,
-  },
-  preview: {
-    host: true,
-    strictPort: true,
-    port: 80,
-    // It's only for dev mode as well. In the prod, there is nginx that proxies requests to the backend.
-    // And we don't use the "preview" command in the prod
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8000',
-      },
-    },
   },
   envPrefix: 'APP_',
 });
