@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.6.1...v1.6.2) (2024-08-05)
+
+
+### Bug Fixes
+
+* **nginx:** add ability to get app from any link ([1aabc65](https://github.com/RomanDeveloperGit/story-app-frontend/commit/1aabc65ed135e7fc13c0992ec8f8a1cab710bb25))
+
 ## [1.6.1](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.6.0...v1.6.1) (2024-07-27)
 
 
