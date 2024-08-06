@@ -1,8 +1,5 @@
 import { api, Dto } from '@/shared/api';
-import {
-  getAccessTokenFromLocalStorage,
-  makeHeadersWithAccessToken,
-} from '@/shared/lib/auth';
+import { getAccessTokenFromLocalStorage, makeHeadersWithAccessToken } from '@/shared/lib/auth';
 import { createApiEffect } from '@/shared/lib/effector';
 import {
   DEFAULT_ROUTE,

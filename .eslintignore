@@ -1,6 +1,9 @@
 dist
 node_modules
 
+*.css.d.ts
+*.generated.ts
+
 .eslintrc.cjs
 commitlint.config.js
 vite.config.ts
