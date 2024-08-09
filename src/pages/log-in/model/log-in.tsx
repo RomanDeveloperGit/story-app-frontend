@@ -3,7 +3,7 @@ import { notifications } from '@mantine/notifications';
 import { createEffect, createEvent, sample } from 'effector';
 
 import { api, ApiError, Dto } from '@/shared/api';
-import { saveAccessTokenInLocalStorage } from '@/shared/lib/auth';
+import { saveAccessTokenInLocalStorage } from '@/shared/lib/access-token';
 import { createApiEffect } from '@/shared/lib/effector';
 
 import {

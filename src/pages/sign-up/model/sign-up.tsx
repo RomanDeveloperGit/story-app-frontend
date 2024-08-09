@@ -5,7 +5,7 @@ import { createEffect, createEvent, createStore, sample } from 'effector';
 import { omit } from 'lodash';
 
 import { api, Dto } from '@/shared/api';
-import { saveAccessTokenInLocalStorage } from '@/shared/lib/auth';
+import { saveAccessTokenInLocalStorage } from '@/shared/lib/access-token';
 import { createApiEffect } from '@/shared/lib/effector';
 
 import {

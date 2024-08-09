@@ -6,7 +6,7 @@ import { api } from '@/shared/api';
 import {
   makeHeadersWithFilledAccessToken,
   removeAccessTokenFromLocalStorage,
-} from '@/shared/lib/auth';
+} from '@/shared/lib/access-token';
 import { createApiEffect } from '@/shared/lib/effector';
 import { DEFAULT_ROUTE, getRouteInstance } from '@/shared/router';
 
