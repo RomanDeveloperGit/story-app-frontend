@@ -54,6 +54,6 @@ export const refreshTokensGuard = (request: Request) => {
 
         resolve(request);
       })
-      .catch(reject);
+      .catch(() => reject());
   });
 };
