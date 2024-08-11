@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { attachLogger } from 'effector-logger';
+import { attachReduxDevTools } from '@effector/redux-devtools-adapter';
 
 import { initApp } from './app';
 
-// https://gist.github.com/zmts/802dc9c3510d79fd40f9dc38a12bccfc
-// TODO: to think about refresh by the time
-
 if (import.meta.env.DEV) {
-  attachLogger();
+  attachReduxDevTools({
+    name: 'Story app',
+    trace: true,
+  });
 }
 
 const App = initApp();
