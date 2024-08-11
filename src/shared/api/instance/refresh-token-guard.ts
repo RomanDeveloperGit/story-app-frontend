@@ -7,6 +7,7 @@ import {
   saveAccessTokenInLocalStorage,
   toBearerToken,
 } from '@/shared/lib/access-token';
+import { DEFAULT_ROUTE, getRouteInstance } from '@/shared/router';
 
 import { Dto } from '../auto-generation/dto';
 
@@ -32,7 +33,11 @@ export const refreshTokensGuard = (request: Request) => {
 
           resolve(response.accessToken);
         })
-        .catch(reject);
+        .catch(async (error) => {
+          await getRouteInstance(DEFAULT_ROUTE.UNAUTHORIZED).open();
+
+          reject(error);
+        });
     });
 
     refreshTokensProcess
