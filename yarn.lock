@@ -1022,10 +1022,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@mantine/core@^7.11.1":
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-7.11.1.tgz#814031a4128c4c72c769a755e1200daa38429c48"
-  integrity sha512-qEwe5ijBe3MWOg4yerJ+HXMugIBtS1Bbqbdnfrg2cuHXr+2paqu8SQMzldtzqfiLsRajOtkokOkY67jUJOacCA==
+"@mantine/core@^7.12.1":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-7.12.1.tgz#acd1861551465c0e2dc0879e8d76a101e865be20"
+  integrity sha512-PXKIDaT1fpNB77dPQIcdFGM2NRnfmsJSVx3uuBccngBQWMIWI0wPyiO1Y26DK4LQrbrypeb+TS+Zxpgx6RoiCA==
   dependencies:
     "@floating-ui/react" "^0.26.9"
     clsx "^2.1.1"
@@ -1034,23 +1034,23 @@
     react-textarea-autosize "8.5.3"
     type-fest "^4.12.0"
 
-"@mantine/hooks@^7.11.1":
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.11.1.tgz#d681118776ec8ec5087842bb5d6e5fd36648a63a"
-  integrity sha512-28WS/U6QL4jaIHf1uFpny5Tglu9MoyyM4bWLmIcAQHtOD3YHpuNvs9OTWLqKAQs6VN+kydlxvjvT+w1LBWEpQg==
+"@mantine/hooks@^7.12.1":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.12.1.tgz#a2b402b02eb2f8bb64739656dce87e00935f92f8"
+  integrity sha512-YPA3qiMHJkWID5+YzakBaLvjHtX3Fg3PdPY49iIb/CaWM9+lrJ+77TOVS7bsY7ZTBHXUfzft1/6Woqt3xSuweA==
 
-"@mantine/notifications@^7.11.2":
-  version "7.11.2"
-  resolved "https://registry.yarnpkg.com/@mantine/notifications/-/notifications-7.11.2.tgz#a241eff96e66cf6e9eb430386a5d66942581cbb7"
-  integrity sha512-KB/6mp3mU3LvcFlfMc5zK5mWcrAO+zAGeiBb1oUjNFXBECCn9xizqqUeT0YbWBHL7wysq9IThDJxLwUBnQt+8Q==
+"@mantine/notifications@^7.12.1":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@mantine/notifications/-/notifications-7.12.1.tgz#e7bf4822997a455a28c145de4e6a101b85d08d08"
+  integrity sha512-YIV2ItCRJzbOjEyXtz5Rjf3qn6kwmcz6CqAGurpd+kecxx6wwNoKuKs6YNlz7tcprFegcH/hCUkW2tVbXHKVBA==
   dependencies:
-    "@mantine/store" "7.11.2"
+    "@mantine/store" "7.12.1"
     react-transition-group "4.4.5"
 
-"@mantine/store@7.11.2":
-  version "7.11.2"
-  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.11.2.tgz#720ea978fdcc881186dd53143bf30dfb32f26727"
-  integrity sha512-FfkmnOnCivOjqwNaTZeV4TgDANUs7fP+0uSgzp0GuvwTuDfQNVafPBRzPkjKuz5ug+Nn9l6WwjfJ6LBDv9U0LQ==
+"@mantine/store@7.12.1":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.12.1.tgz#a60fc1e83a6e2b7ae7d722406a33783334b05625"
+  integrity sha512-zIzYEheEyXchPTNKsm88BJ0CTEZV6ZNwMhMDWHKQE3CzjKLJdKHJdIBcZImRU3Pn4GROZdZdIkQF9HLJ6BjvYw==
 
 "@next/eslint-plugin-next@^13.3.0":
   version "13.5.6"
@@ -3649,13 +3649,6 @@ fraction.js@^4.3.7:
   version "4.3.7"
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.3.7.tgz"
   integrity sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==
-
-framer-motion@^11.2.10:
-  version "11.2.10"
-  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-11.2.10.tgz"
-  integrity sha512-/gr3PLZUVFCc86a9MqCUboVrALscrdluzTb3yew+2/qKBU8CX6nzs918/SRBRCqaPbx0TZP10CB6yFgK2C5cYQ==
-  dependencies:
-    tslib "^2.4.0"
 
 from2@^2.3.0:
   version "2.3.0"
@@ -7301,7 +7294,7 @@ tsconfig-paths@^3.15.0:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tslib@^2.0.0, tslib@^2.1.0, tslib@^2.4.0:
+tslib@^2.0.0, tslib@^2.1.0:
   version "2.6.3"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.3.tgz"
   integrity sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==
