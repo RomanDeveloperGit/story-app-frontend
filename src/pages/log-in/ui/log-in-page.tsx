@@ -7,13 +7,13 @@ import { useUnit } from 'effector-react';
 
 import { UnauthorizedLayout } from '@/layouts/unauthorized-layout';
 
-import { logIn, logInFx } from '../model/log-in';
+import { logIn as _logIn, logInFx } from '../model/log-in';
 import { LogInSchema, logInSchema } from '../model/log-in-schema';
 
 import styles from './log-in-page.module.css';
 
 export const LogInPage = () => {
-  const isPending = useUnit(logInFx.pending);
+  const [isPending, logIn] = useUnit([logInFx.pending, _logIn]);
 
   const {
     handleSubmit,

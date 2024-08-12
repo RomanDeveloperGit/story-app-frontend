@@ -11,7 +11,7 @@ import { $isAuthorized } from '@/entities/auth';
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
 
-import { logOut } from '../model/log-out';
+import { logOutFx } from '../model/log-out';
 
 import styles from './authorized-layout.module.css';
 
@@ -20,7 +20,7 @@ interface Props {
 }
 
 export const AuthorizedLayout: FC<Props> = ({ children }) => {
-  const isAuthorized = useUnit($isAuthorized);
+  const [isAuthorized, logOut] = useUnit([$isAuthorized, logOutFx]);
   if (!isAuthorized) return null;
 
   const redirectToDefaultPage = () => {

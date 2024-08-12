@@ -1,9 +1,10 @@
+import { createEffect } from 'effector';
+
 import { api, Dto } from '@/shared/api';
 import {
   getAccessTokenFromLocalStorage,
   makeHeadersWithAccessToken,
 } from '@/shared/lib/access-token';
-import { createApiEffect } from '@/shared/lib/effector';
 import {
   DEFAULT_ROUTE,
   getRouteInstance,
@@ -17,7 +18,7 @@ import {
   setSavedLinkFromFirstVisit,
 } from '@/entities/auth';
 
-const checkAccessTokenFx = createApiEffect<string, Dto['CheckAccessTokenResponse']>((accessToken) =>
+const checkAccessTokenFx = createEffect<string, Dto['CheckAccessTokenResponse']>((accessToken) =>
   api
     .get('/api/v1/auth/access-token/check', { headers: makeHeadersWithAccessToken(accessToken) })
     .json<Dto['CheckAccessTokenResponse']>(),

@@ -1,10 +1,12 @@
-import { notifications } from '@mantine/notifications';
-
 import { createEffect, createEvent, sample } from 'effector';
 
-import { api, ApiError, Dto } from '@/shared/api';
+import { api, Dto, isApiError } from '@/shared/api';
 import { saveAccessTokenInLocalStorage } from '@/shared/lib/access-token';
-import { createApiEffect } from '@/shared/lib/effector';
+import {
+  showDefaultErrorNotificationFx,
+  showNotificationFx,
+  showSuccessNotificationFx,
+} from '@/shared/lib/notifications';
 
 import {
   $savedLinkFromFirstVisit,
@@ -16,69 +18,50 @@ import {
 import { LogInSchema } from './log-in-schema';
 
 export const logIn = createEvent<LogInSchema>();
-export const logInFx = createApiEffect<Dto['LogInRequest'], Dto['LogInResponse']>(async (data) =>
-  api.post('/api/v1/auth/log-in', { json: data }).json<Dto['LogInResponse']>(),
-);
-
-sample({
-  clock: logIn,
-  target: logInFx,
-});
-
-export const logInSuccessFx = createEffect<
+export const logInFx = createEffect<
   {
-    response: Dto['LogInResponse'];
+    requestData: Dto['LogInRequest'];
     savedLinkFromFirstVisit: string | null;
   },
   void
->(({ response, savedLinkFromFirstVisit }) => {
-  saveAccessTokenInLocalStorage(response.accessToken);
-  setAuthorizedUser(response.user);
+>(async ({ requestData, savedLinkFromFirstVisit }) => {
+  try {
+    const response = await api
+      .post('/api/v1/auth/log-in', { json: requestData })
+      .json<Dto['LogInResponse']>();
 
-  redirectAfterAuthorization({
-    role: response.user.role,
-    link: savedLinkFromFirstVisit,
-  });
+    saveAccessTokenInLocalStorage(response.accessToken);
+    setAuthorizedUser(response.user);
 
-  if (savedLinkFromFirstVisit) {
-    resetSavedLinkFromFirstVisit();
+    redirectAfterAuthorization({
+      role: response.user.role,
+      link: savedLinkFromFirstVisit,
+    });
+
+    if (savedLinkFromFirstVisit) {
+      resetSavedLinkFromFirstVisit();
+    }
+
+    showSuccessNotificationFx({
+      message: 'You logged into your account',
+    });
+  } catch (error) {
+    if (isApiError(error) && error.response.parsedError.code === 'ERROR_USER_NOT_FOUND') {
+      showNotificationFx({
+        title: 'Authorization error',
+        message: 'Check the correctness of the entered data',
+      });
+    } else {
+      showDefaultErrorNotificationFx({ message: 'Authorization error' });
+    }
   }
-
-  notifications.show({
-    message: 'You logged into your account',
-    color: 'green',
-  });
 });
 
 sample({
-  clock: logInFx.doneData,
+  clock: logIn,
   source: $savedLinkFromFirstVisit,
-  fn(savedLinkFromFirstVisit, response) {
-    return {
-      response,
-      savedLinkFromFirstVisit,
-    };
+  fn(savedLinkFromFirstVisit, requestData) {
+    return { requestData, savedLinkFromFirstVisit };
   },
-  target: logInSuccessFx,
-});
-
-const logInErrorFx = createEffect<ApiError, void>((error) => {
-  if (error.code === 'ERROR_USER_NOT_FOUND') {
-    notifications.show({
-      title: 'Authorization error',
-      message: 'Check the correctness of the entered data',
-      color: 'red',
-    });
-  } else {
-    notifications.show({
-      title: 'Authorization error',
-      message: 'Something went wrong',
-      color: 'red',
-    });
-  }
-});
-
-sample({
-  clock: logInFx.failData,
-  target: logInErrorFx,
+  target: logInFx,
 });

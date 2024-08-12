@@ -9,14 +9,23 @@ import { useUnit } from 'effector-react';
 
 import { UnauthorizedLayout } from '@/layouts/unauthorized-layout';
 
-import { $signUpError, resetSignUpError, signUp, signUpFx } from '../model/sign-up';
+import {
+  $signUpError,
+  setSignUpError as _setSignUpError,
+  signUp as _signUp,
+  signUpFx,
+} from '../model/sign-up';
 import { SignUpSchema, signUpSchema } from '../model/sign-up-schema';
 
 import styles from './sign-up-page.module.css';
 
 export const SignUpPage = () => {
-  const isPending = useUnit(signUpFx.pending);
-  const error = useUnit($signUpError);
+  const [isPending, error, setSignUpError, signUp] = useUnit([
+    signUpFx.pending,
+    $signUpError,
+    _setSignUpError,
+    _signUp,
+  ]);
 
   const {
     handleSubmit,
@@ -43,9 +52,9 @@ export const SignUpPage = () => {
 
   useEffect(() => {
     return () => {
-      resetSignUpError();
+      setSignUpError(null);
     };
-  }, []);
+  }, [setSignUpError]);
 
   return (
     <UnauthorizedLayout>

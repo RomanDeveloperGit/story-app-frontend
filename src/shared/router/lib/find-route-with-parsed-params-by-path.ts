@@ -10,7 +10,7 @@ interface RouteWithParsedParams {
 export const findRouteWithParsedParamsByPath = (
   path: string,
   routesForSearching: Route[],
-): RouteWithParsedParams | undefined => {
+): RouteWithParsedParams | null => {
   let parsedParamsForFoundRoute: RouteWithParsedParams['parsedParams'] = {};
 
   const foundRoute = routesForSearching.find((route) => {
@@ -24,7 +24,7 @@ export const findRouteWithParsedParamsByPath = (
     return result;
   });
 
-  if (!foundRoute) return undefined;
+  if (!foundRoute) return null;
 
   return {
     route: foundRoute,
