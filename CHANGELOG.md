@@ -1,3 +1,16 @@
+# [1.7.0](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.6.2...v1.7.0) (2024-08-12)
+
+
+### Bug Fixes
+
+* **api/refresh-token-guard:** add redirect to login page if refreshing is crashed ([9489995](https://github.com/RomanDeveloperGit/story-app-frontend/commit/9489995c0ac6d682c8799649c1c84ac523746d38))
+* **api/refresh-token-guard:** fix final error for any request ([f405cbe](https://github.com/RomanDeveloperGit/story-app-frontend/commit/f405cbef080fbdf30bbaa77e4cb9ae19c1143ef7))
+
+
+### Features
+
+* **auth:** add refreshing tokens ([91fb3a9](https://github.com/RomanDeveloperGit/story-app-frontend/commit/91fb3a930fdc7a06d6ffe995f1c24ae816d400dc))
+
 ## [1.6.2](https://github.com/RomanDeveloperGit/story-app-frontend/compare/v1.6.1...v1.6.2) (2024-08-05)
 
 
