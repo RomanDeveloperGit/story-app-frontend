@@ -2,6 +2,9 @@
 
 An application for reading and writing stories. And, I hope, it will be useful to the FSD community.
 
+#### Interesting things in the project: clear and obvious client-flow from the moment of initialization with self-made routing and authorization protections, JWT authorization with refresh-logic in dev and prod mode, configured nginx, auto-generation of api documentation, linters and a release bot, simple Makefile scripts for all work with the Docker image and container and integration with the Backend.
+#### And a clear demonstration of some of the limitations of the Effector ecosystem at the moment, for example, the inability to use chainRoute to protect routing in my case (due to the logic of checkAccessTokenFx and the need for sequential execution of some steps during initialization of the frontend application).
+
 Main Stack: TS, React, Effector, Atomic Router, Mantine UI, FSD, Vite
 
 ### Changes in my interpretation of FSD:
